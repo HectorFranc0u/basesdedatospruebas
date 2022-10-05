@@ -1,0 +1,21 @@
+use hotelito
+
+create table #orden(
+idOrden int not null primary key identity(1,1),
+Nombre varchar(30),
+apellido varchar(30),
+presupuesto float(4),
+total float(4),
+sobrante float(4),
+FechaDeSalida varchar(30),
+)
+
+insert into #orden(nombre, apellido, presupuesto, total, sobrante, FechaDeSalida)
+select usu.nombre, usu.apellido, usu.presupuesto, factu.total,
+(usu.presupuesto - factu.total), reser.fechadesalida
+from dbo.usuarios usu inner join dbo.facturacion factu
+on usu.idFacturacion = factu.idFacturacion
+	inner join dbo.reservas reser 
+		on factu.idReserva = reser.idReserva
+
+select * from #orden
