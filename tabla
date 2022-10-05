@@ -1,5 +1,9 @@
 use hotelito
 
+
+-- se crea la tabla que va a resumir la orden de cada cliente, ademas se va a tomar en cuenta
+-- si el total es menor a su presupuesto o si la exede, ademas de agregar la fecha de salida
+
 create table #orden(
 idOrden int not null primary key identity(1,1),
 Nombre varchar(30),
@@ -9,6 +13,8 @@ total float(4),
 sobrante float(4),
 FechaDeSalida varchar(30),
 )
+
+-- agregamos elementos a la tabla con cada usuario de la base de datos
 
 insert into #orden(nombre, apellido, presupuesto, total, sobrante, FechaDeSalida)
 select usu.nombre, usu.apellido, usu.presupuesto, factu.total,
