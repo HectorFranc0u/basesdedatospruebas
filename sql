@@ -1,6 +1,6 @@
-create database hotell;
+create database hotelito;
 
-use hotell
+use hotelito
 
 create table Habitacion(
 idHabitacion int not null primary key identity(1,1),
